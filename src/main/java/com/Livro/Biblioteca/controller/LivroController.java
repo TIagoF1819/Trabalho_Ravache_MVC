@@ -15,10 +15,14 @@ import java.util.List;
 @RequestMapping("/livros")
 public class LivroController {
 
-    private List<Livro> livros = new ArrayList<>();
+    private final List<Livro> livros = new ArrayList<>();
 
-    @GetMapping("/inicio")
-    public String inicio(){return "livros/inicio";}
+    // Dados de teste: carregados uma vez, quando a aplicação sobe
+    public LivroController() {
+        livros.add(new Livro("Dom Casmurro", "Machado de Assis", "978-85-359-0277-5"));
+        livros.add(new Livro("Memórias Póstumas de Brás Cubas", "Machado de Assis", "978-85-359-0279-9"));
+        livros.add(new Livro("O Cortiço", "Aluísio Azevedo", "978-85-359-0278-2"));
+    }
 
     @GetMapping
     public String exibirLivros(Model model) {

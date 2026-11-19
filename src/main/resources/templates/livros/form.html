@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Biblioteca - Novo livro</title>
+    <style>
+        * { box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; background: #f4f6f8; margin: 0; color: #222; }
+        header { background: #2c3e50; color: #fff; padding: 20px 40px; }
+        header h1 { margin: 0; font-size: 24px; }
+        main { max-width: 500px; margin: 30px auto; padding: 0 20px; }
+        form { background: #fff; padding: 24px; border-radius: 8px; box-shadow: 0 1px 4px rgba(0,0,0,.1); }
+        label { display: block; margin: 14px 0 6px; font-weight: bold; }
+        input { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; font-size: 15px; }
+        .botoes { display: flex; gap: 10px; margin-top: 22px; }
+        .btn { padding: 10px 18px; border: none; border-radius: 6px; color: #fff;
+            font-size: 14px; cursor: pointer; text-decoration: none; }
+        .btn-salvar { background: #27ae60; }
+        .btn-cancelar { background: #7f8c8d; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>📚 Biblioteca</h1>
+</header>
+
+<main>
+    <h2>Cadastrar livro</h2>
+
+    <form th:action="@{/livros/salvar}" th:object="${livro}" method="post">
+        <label for="titulo">Título</label>
+        <input type="text" id="titulo" th:field="*{titulo}" required>
+
+        <label for="autor">Autor</label>
+        <input type="text" id="autor" th:field="*{autor}" required>
+
+        <label for="isbn">ISBN</label>
+        <input type="text" id="isbn" th:field="*{isbn}" required>
+
+        <div class="botoes">
+            <button type="submit" class="btn btn-salvar">Salvar</button>
+            <a class="btn btn-cancelar" th:href="@{/livros}">Cancelar</a>
+        </div>
+    </form>
+</main>
+
+</body>
+</html>
